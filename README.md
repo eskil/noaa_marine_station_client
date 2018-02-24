@@ -53,3 +53,4 @@ git commit -m "Initial commit"
   * Add http mock
     *
   * Add cli
+  * Publish on hex
