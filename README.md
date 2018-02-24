@@ -28,6 +28,21 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/noaa_marine_station_client](https://hexdocs.pm/noaa_marine_station_client).
 
 
+# Intro
+
+We're going to make a client to scrape NOAA info and a CLI tool to use it. It'll work roughly like
+
+```sh
+$ ./noaa_marine_station_client --list
+PZZ545
+...
+
+$ ./noaa_marine_station_client --read-station-id=PZZ545
+TODAY...
+TONIGHT ...
+TOMORROW ...
+```
+
 # Steps
 
 ## Start a new repo
@@ -97,5 +112,3 @@ index 6ef7377..d46b6f1 100644
      ]
    end
 ```
-
-First you need to specific

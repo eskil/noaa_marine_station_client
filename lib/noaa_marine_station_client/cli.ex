@@ -2,9 +2,9 @@ defmodule NoaaMarineStationClient.Cli do
   @moduledoc """
   noaa_marine_station_client reads NOAA Marine Station forecast data.
 
-  --station-id=<station id>
+  --read-station-id=<station id>, ie. PZZ545 for the SF Bay Area.
+  --list to list available stations.
 
-  Eg. PZZ545 for the SF Bay Area.
   """
 
   def main(args) do
