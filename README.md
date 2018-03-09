@@ -30,14 +30,15 @@ be found at [https://hexdocs.pm/noaa_marine_station_client](https://hexdocs.pm/n
 
 # Intro
 
-We're going to make a client to scrape NOAA info and a CLI tool to use it. It'll work roughly like
+We're going to make a client to scrape NOAA info and a CLI tool to use
+it. It'll work roughly like
 
 ```sh
 $ ./noaa_marine_station_client --list
 PZZ545
 ...
 
-$ ./noaa_marine_station_client --read-station-id=PZZ545
+$ ./noaa_marine_station_client --read-station=PZZ545
 TODAY...
 TONIGHT ...
 TOMORROW ...
@@ -45,7 +46,9 @@ TOMORROW ...
 
 # Steps
 
-## Start a new repo
+## Initial Repo
+
+Start a new project with `mix`, new git repo and commit those files.
 
 ```sh
 mix new noaa_marine_station_client
@@ -57,7 +60,6 @@ git commit -m "Initial commit"
 
 ## TODO
 
-  * Setup for escript cli
   * Add client api
     * api functions
     * specs
@@ -72,6 +74,7 @@ git commit -m "Initial commit"
   * Add http mock
     *
   * Add cli
+    * Setup for escript cli
   * Publish on hex
 
 ## Add the client API
@@ -87,8 +90,9 @@ git commit -m "Initial commit"
 
 ## Add a CLI tool
 
-Having a CLI too with your client is a convenient way to play around
-with it and test the client against the real deal.
+Having a CLI tool with your client is a convenient way to play around
+with it and test the client. And if you're writing an actual tool, it
+might the main way to use your library.
 
 [This](http://asquera.de/blog/2015-04-10/writing-a-commandline-app-in-elixir/)
 blog post explains the steps of writing an elixir command line tool,

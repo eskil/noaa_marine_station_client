@@ -14,17 +14,17 @@ defmodule NoaaMarineStationClient do
     NoaaMarineStationClient.HttpClient
 
   defp parse_station_response(response) do
-    response
+    {:ok, response}
   end
 
   defp parse_station_list_response(response) do
-    response
+    {:ok, response}
   end
 
   def read_station(station_id) do
     case @http_client.read_station(station_id) do
       %{status_code: 200, body: body} ->
-        parse_station_response(Poison.decode(body))
+        parse_station_response(body)
       response ->
         Logger.warn "[NoaaMarineStationClient] Cannot read station #{station_id}"
         Logger.warn "Response #{inspect response}"
@@ -33,9 +33,9 @@ defmodule NoaaMarineStationClient do
   end
 
   def read_station_list() do
-    case @http_client.read_list_station(station_id) do
+    case @http_client.read_station_list() do
       %{status_code: 200, body: body} ->
-        parse_station_response(Poison.decode(body))
+        parse_station_list_response(body)
       response ->
         Logger.warn "[NoaaMarineStationClient] Cannot read station list"
         Logger.warn "Response #{inspect response}"
