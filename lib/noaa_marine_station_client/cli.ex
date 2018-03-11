@@ -3,8 +3,6 @@ defmodule NoaaMarineStationClient.Cli do
   noaa_marine_station_client reads NOAA Marine Station forecast data.
 
   --read-station=<station id>, ie. PZZ545 for the SF Bay Area.
-  --list to list available stations.
-
   """
 
   def main(args) do
@@ -25,18 +23,6 @@ defmodule NoaaMarineStationClient.Cli do
       true  -> help()
       _ -> {options, args, invalid}
     end
-  end
-
-  defp display_station_list({:ok, data}) do
-    IO.puts inspect data
-  end
-
-  defp display_station_list(_) do
-    IO.puts "Cannot load station list"
-  end
-
-  def process({[list: true], [], _invalid}) do
-    display_station_list(NoaaMarineStationClient.read_station_list())
   end
 
   defp display_station_data({:ok, data}) do

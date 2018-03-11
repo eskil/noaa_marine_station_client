@@ -19,11 +19,10 @@ defmodule NoaaMarineStationClient do
     {:ok, response}
   end
 
-  defp parse_station_list_response(response) do
-    # TODO: use floki to scrape the html
-    {:ok, response}
-  end
+  @doc """
+  Fetch weather data from the given station id
 
+  """
   def read_station(station_id, opts \\ []) do
     case @http_client.fetch_station_data(station_id, opts) do
       %{status_code: 200, body: body} ->
@@ -33,19 +32,5 @@ defmodule NoaaMarineStationClient do
         Logger.warn "[NoaaMarineStationClient] Response #{inspect response}"
         :error
     end
-  end
-
-  def read_station_list(opts \\ []) do
-    case @http_client.fetch_station_list(opts) do
-      %{status_code: 200, body: body} ->
-        parse_station_list_response(body)
-      response ->
-        Logger.warn "[NoaaMarineStationClient] Cannot read station list"
-        Logger.warn "[NoaaMarineStationClient] Response #{inspect response}"
-        :error
-    end
-  end
-
-  def read_station_list(opts \\ []) do
   end
 end

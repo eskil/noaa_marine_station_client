@@ -16,14 +16,4 @@ defmodule NoaaMarineStationClient.Client.HttpClient do
     url = "/wtf/MapClick.php?zoneid=#{station_id}&TextType=1"
     HttpClient.get!(url, Keyword.merge([timeout: 10_000], opts))
   end
-
-  def fetch_station_list(zone_url, opts) do
-    # Index of eg. West Coast stations is at,
-    # http://www.nws.noaa.gov/om/marine/marsamepac.htm
-    HttpClient.get(zone_url, Keyword.merge([timeout: 10_000], opts))
-  end
-
-  def fetch_zone_list(opts) do
-    HttpClient.get("/om/marine/marsame.htm", Keyword.merge([timeout: 10_000], opts))
-  end
 end
