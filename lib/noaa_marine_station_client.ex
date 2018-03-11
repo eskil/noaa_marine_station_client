@@ -21,7 +21,6 @@ defmodule NoaaMarineStationClient do
 
   @doc """
   Fetch weather data from the given station id
-
   """
   def read_station(station_id, opts \\ []) do
     case @http_client.fetch_station_data(station_id, opts) do
