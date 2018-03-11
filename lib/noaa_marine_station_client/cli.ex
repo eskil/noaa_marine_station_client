@@ -6,7 +6,9 @@ defmodule NoaaMarineStationClient.Cli do
   """
 
   def main(args) do
-    args |> parse_args |> process
+    args
+    |> parse_args
+    |> process
   end
 
   defp help() do

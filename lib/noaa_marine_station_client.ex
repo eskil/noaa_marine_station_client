@@ -1,11 +1,14 @@
 defmodule NoaaMarineStationClient do
   @moduledoc """
-  Client for reading and scraping info from
-  http://marine.weather.gov/MapClick.php?zoneid=<stationid>&TextType=1
+  Client for reading weather station data from marine NOAA stations.
 
-  http://www.nws.noaa.gov/wtf/MapClick.php?zoneid=PZZ545
+  Reads and scrapes data
+  http://www.nws.noaa.gov/wtf/MapClick.php?zoneid=PZZ545&TextType=1
 
-  You can find a list of stations at http://www.nws.noaa.gov/om/marine/marsamepac.htm.
+  You can find a list of stations at
+  http://www.nws.noaa.gov/om/marine/marsamepac.htm for West Coast, and
+  you can find a list of regions at
+  http://www.nws.noaa.gov/om/marine/marsame.htm
   """
 
   require Logger
@@ -21,6 +24,9 @@ defmodule NoaaMarineStationClient do
 
   @doc """
   Fetch weather data from the given station id
+
+  To specific arguments for the underlying HTTP library, set the appropriate
+  keyword values in `opts[:http_client]`.
   """
   def read_station(station_id, opts \\ []) do
     case @http_client.fetch_station_data(station_id, opts) do

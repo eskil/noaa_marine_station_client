@@ -14,6 +14,6 @@ defmodule NoaaMarineStationClient.Client.HttpClient do
 
   def fetch_station_data(station_id, opts) do
     url = "/wtf/MapClick.php?zoneid=#{station_id}&TextType=1"
-    HttpClient.get!(url, Keyword.merge([timeout: 10_000], opts))
+    HttpClient.get!(url, Keyword.merge([timeout: 10_000], opts[:http_client] || []))
   end
 end
