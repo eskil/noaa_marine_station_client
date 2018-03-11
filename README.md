@@ -34,10 +34,6 @@ We're going to make a client to scrape NOAA info and a CLI tool to use
 it. It'll work roughly like
 
 ```sh
-$ ./noaa_marine_station_client --list
-PZZ545
-...
-
 $ ./noaa_marine_station_client --read-station=PZZ545
 TODAY...
 TONIGHT ...
@@ -46,14 +42,11 @@ TOMORROW ...
 
 To keep this README readable, I'll omit all the actual HTML
 scraping (using [floki](https://github.com/philss/floki) and instead
-just pass the html unparsed. The final code in the github repo will
+just print the HTML unparsed. The final code in the github repo will
 have the actual scraping.
 
-I'll also omit the fact that to actually get the complete list of NOAA
-stations (not just West Coast), you need to go through multiple pages
-to collect station ids, and some ids aren't really stations but
-synopsis links. Anyway, ignore that, and let's just connect a
-commandline tool to an API and to a HTTP client.
+I'll also omit fetching the list of available station ids in the
+README, but it will be in the final code.
 
 # Steps
 
@@ -218,11 +211,13 @@ another, like
 [HTTPosion](https://github.com/edgurgel/httpoison#wrapping-httpoisonbase)
 or [Tesla](https://github.com/teamon/tesla). Whatever floats your boat.
 
-## Add a mock client
-
-
-
 ## Add a test
+
+The client we have now doesn't parse the HTML response, so our test
+will simply look for strings within the HTML for now. The final
+version in github will do the right thing
+
+## Add a mock client
 
 
 ## Add a CLI tool

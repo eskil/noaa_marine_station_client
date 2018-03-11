@@ -8,7 +8,14 @@ defmodule NoaaMarineStationClient.Mixfile do
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       escript: [main_module: NoaaMarineStationClient.Cli],
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        "coveralls": :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -23,6 +30,7 @@ defmodule NoaaMarineStationClient.Mixfile do
   defp deps do
     [
       {:httpotion, "~> 3.0"},
+      {:excoveralls, "~> 0.6", only: :test},
       {:poison, "~> 3.1"},
       {:floki, "~> 0.20.0"}
     ]
