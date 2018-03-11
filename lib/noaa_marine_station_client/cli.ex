@@ -17,7 +17,6 @@ defmodule NoaaMarineStationClient.Cli do
   end
 
   defp parse_args(args) do
-    IO.puts "args " <> inspect args
     {options, args, invalid} = OptionParser.parse(
       args,
       aliases: [h: :help]
@@ -28,14 +27,28 @@ defmodule NoaaMarineStationClient.Cli do
     end
   end
 
+  defp display_station_list({:ok, data}) do
+    IO.puts inspect data
+  end
+
+  defp display_station_list(_) do
+    IO.puts "Cannot load station list"
+  end
+
   def process({[list: true], [], _invalid}) do
-    {:ok, data} = NoaaMarineStationClient.read_station_list()
-    IO.inspect(data)
+    display_station_list(NoaaMarineStationClient.read_station_list())
+  end
+
+  defp display_station_data({:ok, data}) do
+    IO.puts inspect data
+  end
+
+  defp display_station_data(_) do
+    IO.puts "Cannot load station data"
   end
 
   def process({[read_station: station_id], [], _invalid}) do
-    {:ok, data} = NoaaMarineStationClient.read_station(station_id)
-    IO.inspect(data)
+    display_station_data(NoaaMarineStationClient.read_station(station_id))
   end
 
   def process({_options, _commands, _invalid}) do

@@ -14,10 +14,12 @@ defmodule NoaaMarineStationClient do
     NoaaMarineStationClient.HttpClient
 
   defp parse_station_response(response) do
+    # TODO: use floki to scrape the html
     {:ok, response}
   end
 
   defp parse_station_list_response(response) do
+    # TODO: use floki to scrape the html
     {:ok, response}
   end
 
@@ -27,7 +29,7 @@ defmodule NoaaMarineStationClient do
         parse_station_response(body)
       response ->
         Logger.warn "[NoaaMarineStationClient] Cannot read station #{station_id}"
-        Logger.warn "Response #{inspect response}"
+        Logger.warn "[NoaaMarineStationClient] Response #{inspect response}"
         :error
     end
   end
@@ -38,7 +40,7 @@ defmodule NoaaMarineStationClient do
         parse_station_list_response(body)
       response ->
         Logger.warn "[NoaaMarineStationClient] Cannot read station list"
-        Logger.warn "Response #{inspect response}"
+        Logger.warn "[NoaaMarineStationClient] Response #{inspect response}"
         :error
     end
   end

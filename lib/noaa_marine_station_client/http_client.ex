@@ -11,6 +11,8 @@ defmodule NoaaMarineStationClient.HttpClient do
   end
 
   def read_station_list() do
+    # Index of indexes is at http://www.nws.noaa.gov/om/marine/marsame.htm
+    # Index of eg. West Coast staions is at , http://www.nws.noaa.gov/om/marine/marsamepac.htm
     HttpClient.get("/om/marine/marsamepac.htm", [timeout: 10_000])
   end
 end
